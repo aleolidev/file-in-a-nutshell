@@ -68,4 +68,4 @@ tmp/
 .vscode-test/**
 
 # Compiled output for the extension
-extension.vsix
+*.vsix
