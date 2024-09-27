@@ -1,0 +1,71 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build output
+dist/
+out/
+.esbuild/
+
+# Compiled TypeScript
+*.tsbuildinfo
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Visual Studio Code directories
+.vscode/
+.vscode-test/
+
+# IDE specific files
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# macOS specific files
+.DS_Store
+
+# Linux specific files
+*.swp
+*.swo
+*~
+.nfs*
+
+# Windows specific files
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Lockfiles
+*.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Miscellaneous
+temp/
+tmp/
+*.tmp
+*.temp
+
+# Debugger working directory
+.vscode-test/**
+
+# Compiled output for the extension
+extension.vsix
