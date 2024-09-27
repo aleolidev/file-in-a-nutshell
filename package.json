@@ -1,23 +1,71 @@
 {
   "name": "file-in-a-nutshell",
-  "displayName": "file-in-a-nutshell",
-  "description": "Copy JavaScript or TypeScript files with their path for easy ChatGPT contextualization",
+  "displayName": "File in a Nutshell",
+  "description": "Quickly copy files and their contents with formatted paths.",
   "version": "0.0.1",
+  "publisher": "aleolidev",
   "engines": {
     "vscode": "^1.93.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "file-in-a-nutshell.helloWorld",
-        "title": "Hello World"
+        "command": "extension.copyFileContent",
+        "title": "Copy File(s) Content with Path"
+      },
+      {
+        "command": "extension.copyFolderContent",
+        "title": "Copy Folder Content with Paths"
       }
-    ]
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "extension.copyFileContent",
+          "when": "explorerResourceIsFolder == false",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.copyFolderContent",
+          "when": "explorerResourceIsFolder == true",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "extension.copyFileContent",
+        "key": "ctrl+alt+c",
+        "mac": "cmd+alt+c",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+      },
+      {
+        "command": "extension.copyFolderContent",
+        "key": "ctrl+alt+shift+c",
+        "mac": "cmd+alt+shift+c",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "File in a Nutshell Extension Configuration",
+      "properties": {
+        "fileInANutshell.copyFileShortcut": {
+          "type": "string",
+          "default": "ctrl+alt+c",
+          "description": "Default keyboard shortcut for copying file content with path."
+        },
+        "fileInANutshell.copyFolderShortcut": {
+          "type": "string",
+          "default": "ctrl+alt+shift+c",
+          "description": "Default keyboard shortcut for copying folder content with paths."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "pnpm run package",

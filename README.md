@@ -1,71 +1,178 @@
-# file-in-a-nutshell README
+# File in a Nutshell
 
-This is the README for your extension "file-in-a-nutshell". After writing up a brief description, we recommend including the following sections.
+**Quickly copy files and their contents with formatted paths.**
+
+<div align="center">
+  <img src="src/resources/icon.png" alt="Extension Logo" style="max-height: 256px; width: auto;" />
+</div>
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- **Copy File Content with Path:** Easily copy the content of selected files along with their relative paths, formatted with appropriate comment styles based on the file type.
+- **Copy Folder Content with Paths:** Recursively copy the content of selected folders and all their subfolders, including file paths and contents.
+- **Customizable Keyboard Shortcuts:** Assign your preferred keyboard shortcuts for quick access to copy commands.
+- **Supports Multiple File Types:** Automatically applies the correct comment syntax for a wide range of file extensions.
 
-For example if there is an image subfolder under your extension project workspace:
+## Installation
 
-\!\[feature X\]\(images/feature-x.png\)
+1. **Install via VS Code Marketplace:**
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+   - Open **Visual Studio Code**.
+   - Go to the **Extensions** view by clicking on the Extensions icon in the Activity Bar on the side of the window or pressing `Ctrl+Shift+X` (`Cmd+Shift+X` on macOS).
+   - Search for "**File in a Nutshell**".
+   - Click **Install**.
 
-## Requirements
+2. **Install from `.vsix` Package:**
+   - Download the `.vsix` file from the [Marketplace](https://marketplace.visualstudio.com/) or your repository.
+   - Open **Visual Studio Code**.
+   - Press `Ctrl+Shift+P` (`Cmd+Shift+P` on macOS) to open the Command Palette.
+   - Type `Extensions: Install from VSIX...` and select it.
+   - Browse to the downloaded `.vsix` file and install.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Usage
 
-## Extension Settings
+### 1. **Using the Context Menu**
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+- **Copy File(s) Content with Path:**
 
-For example:
+  - Right-click on one or multiple files in the Explorer.
+  - Select **Copy File(s) Content with Path** from the context menu.
+  - The formatted paths and file contents are copied to your clipboard.
 
-This extension contributes the following settings:
+- **Copy Folder Content with Paths:**
+  - Right-click on a folder in the Explorer.
+  - Select **Copy Folder Content with Paths** from the context menu.
+  - All files within the folder (recursively) along with their paths and contents are copied to your clipboard.
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+### 2. **Using Keyboard Shortcuts**
 
-## Known Issues
+- **Copy File Content with Path:**
+  - **Windows/Linux:** `Ctrl + Alt + C`
+  - **macOS:** `Cmd + Alt + C`
+- **Copy Folder Content with Paths:**
+  - **Windows/Linux:** `Ctrl + Alt + Shift + C`
+  - **macOS:** `Cmd + Alt + Shift + C`
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+_Note: These are the default shortcuts. You can customize them as described below._
 
-## Release Notes
+## Configuration
 
-Users appreciate release notes as you update your extension.
+### Customize Keyboard Shortcuts
 
-### 1.0.0
+You can change the default keyboard shortcuts to better fit your workflow.
 
-Initial release of ...
+1. **Open Keyboard Shortcuts:**
 
-### 1.0.1
+   - Press `Ctrl + K Ctrl + S` (`Cmd + K Cmd + S` on macOS).
 
-Fixed issue #.
+2. **Search for Commands:**
 
-### 1.1.0
+   - Look for **Copy File(s) Content with Path** and **Copy Folder Content with Paths**.
 
-Added features X, Y, and Z.
+3. **Change the Keybinding:**
+   - Click the pencil icon next to the command you want to change.
+   - Press the desired key combination.
+   - Press `Enter` to confirm.
+
+### Extension Settings
+
+You can also customize settings related to the extension:
+
+- **Copy File Shortcut:**
+
+  - `fileInANutshell.copyFileShortcut`
+  - **Type:** `string`
+  - **Default:** `ctrl+alt+c`
+  - **Description:** Default keyboard shortcut for copying file content with path.
+
+- **Copy Folder Shortcut:**
+  - `fileInANutshell.copyFolderShortcut`
+  - **Type:** `string`
+  - **Default:** `ctrl+alt+shift+c`
+  - **Description:** Default keyboard shortcut for copying folder content with paths.
+
+To modify these settings:
+
+1. **Open Settings:**
+
+   - Press `Ctrl + ,` (`Cmd + ,` on macOS).
+
+2. **Search for the Setting:**
+
+   - Type `fileInANutshell.copyFileShortcut` or `fileInANutshell.copyFolderShortcut`.
+
+3. **Change the Value:**
+   - Enter your preferred keyboard shortcut.
+
+## Supported File Types
+
+The extension automatically applies the correct comment syntax based on the file extension. It supports a wide range of file types, including but not limited to:
+
+- **Single-line Comments:**
+
+  - `.js`, `.ts`, `.jsx`, `.tsx`, `.py`, `.sh`, `.rb`, `.php`, `.go`, `.swift`, `.json`, `.yaml`, `.yml`, `.ini`, `.toml`, `.rs`, `.pl`, `.ps1`, `.bat`, `.cmd`, `.make`, `.mk`, `.dockerfile`, `.hs`, `.lua`, `.r`, `.jl`, `.scala`, `.kt`, `.sql`, `.erl`, `.ex`, `.exs`, `.clj`, `.cljs`, `.coffee`, `.nim`
+
+- **Block Comments:**
+
+  - `.css`, `.scss`, `.sass`, `.less`, `.html`, `.htm`, `.xml`, `.c`, `.cpp`, `.h`, `.cs`, `.java`, `.md`, `.vue`, `.ejs`, `.jsp`, `.asp`, `.aspx`, `.m`, `.tex`, `.latex`, `.bib`, `.ml`, `.mli`, `.fs`, `.fsi`, `.fsx`, `.asm`, `.s`, `.d`
+
+- **Default Comment Style:**
+  - `//` for unsupported file types.
+
+## Contributing
+
+Contributions are welcome! Whether it's reporting bugs, suggesting features, or submitting pull requests, your help is appreciated.
+
+1. **Fork the Repository:**
+
+   - Click the **Fork** button at the top right of the repository page.
+
+2. **Clone Your Fork:**
+
+   ```bash
+   git clone https://github.com/your-username/file-in-a-nutshell.git
+   ```
+
+3. **Create a New Branch:**
+
+   ```bash
+    git checkout -b feature/awesome-feature
+   ```
+
+4. **Make Changes:**
+
+   - Add your changes to the codebase.
+
+5. **Commit Changes:**
+
+   ```bash
+   git commit -am 'Add awesome feature'
+   ```
+
+6. **Push Changes:**
+   ```bash
+   git push origin feature/awesome-feature
+   ```
+7. **Submit a Pull Request:**
+   - Go to your fork on GitHub.
+   - Click the **New Pull Request** button.
+   - Select the base repository and branch.
+   - Click **Create Pull Request**.
+
+## Issues and Support
+
+For any issues, bugs, or feature requests, please [create an issue](https://github.com/aleolidev/file-in-a-nutshell/issues) on GitHub.
+
+For additional support or questions, you can contact the maintainer.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Acknowledgements
+
+- Inspired by the need to quickly copy file paths with their contents for interaction with AI tools.
 
 ---
 
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Made with ❤️ by [Aleoli](https://aleoli.dev) | [GitHub](https://github.com/aleolidev)

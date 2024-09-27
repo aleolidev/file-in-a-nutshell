@@ -1,26 +1,67 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
+import * as fs from "fs";
+import * as path from "path";
+import { commentFilePath } from "./utils/comments";
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+  let disposable = vscode.commands.registerCommand(
+    "extension.copyFileContent",
+    async (uri: vscode.Uri, selectedUris: vscode.Uri[]) => {
+      const uris = selectedUris || [uri];
+      let result = "";
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "file-in-a-nutshell" is now active!');
+      for (const fileUri of uris) {
+        const fileContent = await getFileContent(fileUri.fsPath);
+        const commentedPath = commentFilePath(fileUri.fsPath);
+        result += `${commentedPath}\n`;
+        result += `${fileContent}\n\n`;
+      }
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('file-in-a-nutshell.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from file-in-a-nutshell!');
-	});
+      await vscode.env.clipboard.writeText(result.trim());
+      vscode.window.showInformationMessage("File content copied to clipboard!");
+    }
+  );
 
-	context.subscriptions.push(disposable);
+  let folderDisposable = vscode.commands.registerCommand(
+    "extension.copyFolderContent",
+    async (uri: vscode.Uri) => {
+      let result = "";
+      await traverseFolder(uri.fsPath, async (filePath) => {
+        const fileContent = await getFileContent(filePath);
+        const commentedPath = commentFilePath(filePath);
+        result += `${commentedPath}\n`;
+        result += `${fileContent}\n\n`;
+      });
+
+      await vscode.env.clipboard.writeText(result.trim());
+      vscode.window.showInformationMessage(
+        "Folder content copied to clipboard!"
+      );
+    }
+  );
+
+  context.subscriptions.push(disposable, folderDisposable);
 }
 
-// This method is called when your extension is deactivated
+async function getFileContent(filePath: string): Promise<string> {
+  return fs.promises.readFile(filePath, "utf8");
+}
+
+async function traverseFolder(
+  folderPath: string,
+  fileCallback: (filePath: string) => Promise<void>
+) {
+  const entries = await fs.promises.readdir(folderPath, {
+    withFileTypes: true,
+  });
+  for (const entry of entries) {
+    const fullPath = path.join(folderPath, entry.name);
+    if (entry.isDirectory()) {
+      await traverseFolder(fullPath, fileCallback);
+    } else {
+      await fileCallback(fullPath);
+    }
+  }
+}
+
 export function deactivate() {}
