@@ -4,6 +4,11 @@
   "description": "Quickly copy files and their contents with formatted paths.",
   "version": "0.0.1",
   "publisher": "aleolidev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aleolidev/file-in-a-nutshell"
+  },
+  "license": "MIT",
   "engines": {
     "vscode": "^1.93.0"
   },
