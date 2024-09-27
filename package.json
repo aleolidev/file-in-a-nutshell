@@ -16,7 +16,7 @@
     "Other"
   ],
   "main": "./dist/extension.js",
-  "icon": "./src/resources/icon.png",
+  "icon": "src/resources/icon.png",
   "contributes": {
     "commands": [
       {
