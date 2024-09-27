@@ -3,7 +3,7 @@
 **Quickly copy files and their contents with formatted paths.**
 
 <div align="center">
-  <img src="src/resources/icon.png" alt="Extension Logo" style="max-height: 256px; width: auto;" />
+  <img src="resources/icon.png" alt="Extension Logo" style="max-height: 256px; width: auto;" />
 </div>
 
 ## Features
