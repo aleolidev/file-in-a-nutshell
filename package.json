@@ -15,6 +15,15 @@
   "categories": [
     "Other"
   ],
+  "keywords": [
+    "copy",
+    "file content",
+    "file path",
+    "folder",
+    "recursion",
+    "comment syntax",
+    "developer productivity"
+  ],
   "main": "./dist/extension.js",
   "icon": "resources/icon.png",
   "contributes": {
