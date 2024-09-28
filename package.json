@@ -57,12 +57,6 @@
         "key": "ctrl+alt+c",
         "mac": "cmd+alt+c",
         "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
-      },
-      {
-        "command": "extension.copyFolderContent",
-        "key": "ctrl+alt+shift+c",
-        "mac": "cmd+alt+shift+c",
-        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
       }
     ],
     "configuration": {
@@ -73,11 +67,6 @@
           "type": "string",
           "default": "ctrl+alt+c",
           "description": "Default keyboard shortcut for copying file content with path."
-        },
-        "fileInANutshell.copyFolderShortcut": {
-          "type": "string",
-          "default": "ctrl+alt+shift+c",
-          "description": "Default keyboard shortcut for copying folder content with paths."
         }
       }
     }
