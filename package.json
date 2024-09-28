@@ -42,12 +42,12 @@
         {
           "command": "extension.copyFileContent",
           "when": "explorerResourceIsFolder == false",
-          "group": "navigation"
+          "group": "5_cutcopypaste@200"
         },
         {
           "command": "extension.copyFolderContent",
           "when": "explorerResourceIsFolder == true",
-          "group": "navigation"
+          "group": "5_cutcopypaste@201"
         }
       ]
     },
