@@ -2,7 +2,7 @@
   "name": "file-in-a-nutshell",
   "displayName": "File in a Nutshell",
   "description": "Quickly copy files and their contents with formatted paths.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "aleolidev",
   "repository": {
     "type": "git",
